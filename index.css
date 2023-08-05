@@ -1,3 +1,21 @@
 body {
     margin: 0;
+    font-family: 'Smythe', cursive;
 } 
+
+.item-name{
+
+    font-size: 28px;
+    font-weight: 400;
+    
+}
+
+.item-ingredients{
+    font-size: 16px;
+    
+}
+
+.item-price{
+    font-size: 20px;
+    
+}
