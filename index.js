@@ -2,6 +2,16 @@ import { menuArray } from "/data.js"
 
 
 const renderMenuEl = document.getElementById("feed")
+const renderCartEl = document.getElementById("cart")
+
+document.addEventListener("click", function(e){
+    if(e.target.dataset.buy){
+        addItemsToShoppingCart(e.target.dataset.buy)
+        hidden.style.display ='block'
+    }else if(e.target.dataset.remove){
+        removeItemFromCart(e.target.dataset.remove)
+    }
+})
 
 function displayMenu(){
     let renderMenu = ''
@@ -29,3 +39,35 @@ function displayMenu(){
 }
 
 displayMenu()
+
+function addItemsToShoppingCart(itemId){
+    const addedItem = menuArray.filter(function(item){
+        return item.id == itemId  
+    })[0]
+    addedToCartItems.push(addedItem)   
+    displayCart()
+}
+
+ function displayCart(){
+    let renderCart = ""
+    addItemsToCart.forEach(function(item){
+    renderCart += `<div class="cart-items" id="cart-items">
+                <div class = 'item-and-remove'>
+                <p class='cart-item-name'> ${item.name}</p>
+                <button 
+                    type='button' 
+                    class='remove-btn' 
+                    id='remove-btn'
+                    data-remove='${index}'
+                    >remove
+                </button>
+            </div>
+                <p class='cart-item-name'><span class='dollar-sign-cart'>$
+                </span>${item.price}</p>                
+         </div>`               
+})
+
+renderCartEl.innerHTML = renderCart
+}
+
+displayCart()
