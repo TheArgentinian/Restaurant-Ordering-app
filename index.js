@@ -3,13 +3,14 @@ import { menuArray } from "/data.js"
 
 const renderMenuEl = document.getElementById("feed")
 const renderCartEl = document.getElementById("cart")
+const hidden = document.getElementById('hidden')
 
 let addItemsToCart = []
 
 document.addEventListener("click", function(e){
     if(e.target.dataset.buy){
         addItemsToShoppingCart(e.target.dataset.buy)
-       // hidden.style.display ='block'//
+        hidden.style.display ='block'
     }else if(e.target.dataset.remove){
         removeItemFromCart(e.target.dataset.remove)
     }
@@ -70,6 +71,22 @@ function addItemsToShoppingCart(itemId){
 })
 
 renderCartEl.innerHTML = renderCart
+
 }
 
 displayCart()
+
+function addingOfPrices(){
+    let prices = 0 
+    addItemsToCart.forEach(function(item){
+        prices += item.price
+    })
+    totalPrice.textContent =  '$ ' + prices
+}
+
+function removeItemFromCart(ItemIndex){
+    addItemsToCart.splice(ItemIndex, 1)
+    if(addItemsToCart.length === 0){
+        hidden.style.display ='none'
+    }}
+

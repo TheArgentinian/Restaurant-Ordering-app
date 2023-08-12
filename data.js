@@ -14,7 +14,7 @@ export const menuArray = [
         id: 1
     },
         {
-        name: "Beer",
+        name: "Cerveza",
         ingredients: ["malta, lúpulo, levadura, agua"],
         price: 12,
         emoji: "img/cerveza.svg",
